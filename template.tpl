@@ -114,6 +114,10 @@ ___TEMPLATE_PARAMETERS___
         "displayValue": "Email Signup"
       },
       {
+        "value": "sms_signup",
+        "displayValue": "SMS Signup"
+      },
+      {
         "value": "view_product",
         "displayValue": "View Product"
       },
@@ -201,8 +205,16 @@ ___TEMPLATE_PARAMETERS___
               "displayValue": "Products"
             },
             {
-              "value": "address_street",
+              "value": "order_type",
+              "displayValue": "Order Type"
+            },
+            {
+              "value": "address_street_1",
               "displayValue": "Address: Street"
+            },
+            {
+              "value": "address_street_2",
+              "displayValue": "Address: Apartment/Unit"
             },
             {
               "value": "address_city",
@@ -309,10 +321,13 @@ const hasCustomDomain = data.hasCustomDomain;
 const customDomainName = data.customDomainName;
 const eventType = data.eventType;
 const customEventName = data.customEventName;
-const params = data.params;
+const params = data.params || [];
+const hasCustomParams = data.hasCustomParams;
+const customParams = data.customParams || [];
 
 const eventName = eventType == 'custom' ? customEventName : eventType;
-const paramsMap = !!params && makeTableMap(params, 'field', 'value');
+const combinedParams = params.concat(customParams);
+const paramsMap = !!combinedParams.length && makeTableMap(combinedParams, 'field', 'value');
 
 // Load Rockerbox JS on page
 const scriptUrl = !!hasCustomDomain ? 'https://getrockerbox.com/customdomain/'+customDomainName+'/wxyz.rb.js' : 'https://getrockerbox.com/assets/wxyz.v2.js';
@@ -636,6 +651,6 @@ scenarios: []
 
 ___NOTES___
 
-Created on 3/8/2022, 10:22:10 AM
+Created on 3/8/2022, 1:18:39 PM
 
 
