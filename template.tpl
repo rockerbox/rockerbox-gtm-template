@@ -66,7 +66,7 @@ ___TEMPLATE_PARAMETERS___
       {
         "type": "REGEX",
         "args": [
-          "[^https?:\\/\\/]([\\w\\d-]+)\\.(.*)\\.([\\w\\d-]*)[^\\/?\u0026]"
+          "(?!https?)([\\w\\d-]+)\\.(.*)\\.([\\w\\d-]*)[^\\/?\u0026]"
         ],
         "errorMessage": "Please enter a valid domain without https:// or anything at the end",
         "enablingConditions": [
@@ -651,6 +651,6 @@ scenarios: []
 
 ___NOTES___
 
-Created on 3/8/2022, 1:18:39 PM
+Created on 6/9/2022, 5:37:42 PM
 
 
