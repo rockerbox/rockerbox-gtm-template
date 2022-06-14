@@ -2,6 +2,8 @@ homepage: "https://www.rockerbox.com"
 documentation: "https://help.rockerbox.com/docs/gtm-template"
 versions:
   # Latest version
+  - sha: 1706106cfe5137529931e5043c712e45378569bc
+    changeNotes: Update regex for validating custom domains
+  # Older versions
   - sha: 0c26dabc06ca85c6aff1abe59a0680f7aa212e1f
     changeNotes: Initial release
-  # Older versions
