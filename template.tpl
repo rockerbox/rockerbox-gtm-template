@@ -312,7 +312,7 @@ const callInWindow = require('callInWindow');
 const copyFromWindow = require('copyFromWindow');
 const injectScript = require('injectScript');
 const toBase64 = require('toBase64');
-const createQueue = require('createQueue');
+const createArgumentsQueue = require('createArgumentsQueue');
 const makeTableMap = require('makeTableMap');
 
 // Inputs from fields
@@ -339,8 +339,7 @@ if (!hasRBLoaded || !hasRBInit) {
   setInWindow('RB', {}, false);
   const hasQueue = copyFromWindow('RB.queue') || copyFromWindow('RB.track');
   if (!hasQueue) {
-    const pushToQueue = createQueue('RB.queue');
-    setInWindow('RB.track', pushToQueue, false);
+    createArgumentsQueue('RB.track', 'RB.queue');
   }
 
   const pixelHash = toBase64(pixelSourceName);
@@ -350,7 +349,7 @@ if (!hasRBLoaded || !hasRBInit) {
 }
 
 // Fire Pixel
-callInWindow('RB.track', [eventName, paramsMap]);
+callInWindow('RB.track', eventName, paramsMap);
 
 // Call data.gtmOnSuccess when the tag is finished.
 data.gtmOnSuccess();
@@ -651,6 +650,6 @@ scenarios: []
 
 ___NOTES___
 
-Created on 6/13/2022, 8:29:00 PM
+Created on 2/6/2023, 05:35:00 AM
 
 
